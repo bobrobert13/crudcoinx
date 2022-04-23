@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Squema = mongoose.Schema; 
+const Squema = mongoose.Schema;
 
 const MonedaSchema = new Squema({
     nombre: String,
@@ -9,5 +9,5 @@ const MonedaSchema = new Squema({
     imagen: String
 
 });
-const modelMoneda = mongoose.model('Message', MonedaSchema);
+const modelMoneda = mongoose.model('moneda', MonedaSchema);
 module.exports = modelMoneda;
