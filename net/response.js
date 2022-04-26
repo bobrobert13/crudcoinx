@@ -1,15 +1,21 @@
-exports.correcto = function(req, res, mensaje, status) {
+
+
+exports.correcto = function(req, res, mensaje, data, status) {
+        let ServerResponse = data
         res.status(status).send({
         'error':'',
-        'true': mensaje + ' ' + status
+        'true': mensaje,
+        'res': ServerResponse
     })
     }
 
-exports.errores = function(req, res, mensaje, status) {
+exports.errores = function(req, res, mensaje, data, status) {
+        let ServerResponse = data
         res.status(status).send(
             {
-                'error': mensaje,
-                'false':'Error ' + status
+                'false': mensaje,
+                'error':'Error Peticion',
+                'res':  ServerResponse
             }
         )
 }

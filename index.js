@@ -6,6 +6,13 @@ const app = express();
 
 const port = 3000 || process.env.DB_port
 
+app.get('/', (req, res) => {
+    res.json({
+        conexion: "Activated",
+        status: "Online"
+    })
+})
+
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.text());
 

@@ -16,22 +16,25 @@ console.log("Base de Datos CrudCoinx Atlas Conectada");
 function insertarMoneda(moneda) {
         const addmoneda = new model(moneda);
         addmoneda.save();
-        return console.log("Moneda Creada")
 }
 
 async function listarMonedas() {
-   // const lista_monedas = []
     const lista_monedas = await model.find();
     console.log(lista_monedas)
+    return lista_monedas
 }
 
-async function editarMoneda(id, nombre, precio, simbolo, imagen) 
-{
-  let default_precio;
-  if (!precio || precio == null && !nombre || nombre == null && !simbolo || simbolo == null && !imagen || imagen == null && !id || id == null ) {
-   console.log("En edicion existen algunos datos nulos")
-   return
+async function buscarMoneda(nombre) {
+  const buscarMoneda = await model.find()
+  const moneda = buscarMoneda.filter(buscarMoneda => buscarMoneda.nombre === nombre )
+  if (moneda !== ['']) {
+   return moneda
   }
+  return "Moneda no Encontrada"
+}
+
+async function editarMoneda(id, nombre, precio, simbolo, imagen)
+{
         const buscarMoneda = await model.findOne({_id:id});
         buscarMoneda.nombre = nombre;
         buscarMoneda.precio = precio;
@@ -51,4 +54,5 @@ module.exports = {
     read: listarMonedas,
     update: editarMoneda,
     delete: BorrarMoneda,
+    buscar: buscarMoneda
 };

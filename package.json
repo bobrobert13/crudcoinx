@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
+    "dev": "nodemon index",
+    "start": " node index",
     "build": "babel "
   },
   "keywords": [
@@ -15,10 +16,15 @@
   "author": "Robert Caraballo",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "GridFS": "^0.3.0",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongoose": "^6.3.0",
-    "nodemon": "^2.0.15"
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "vuex-persist": "^3.1.3"
   }
 }

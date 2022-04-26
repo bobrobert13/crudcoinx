@@ -6,6 +6,7 @@ const MonedaSchema = new Squema({
     nombre: String,
     precio: Number,
     simbolo: String,
+    descripcion: String,
     imagen: String
 
 });
