@@ -9,19 +9,13 @@ const usuario = require('../model/mook')
 
 function RegistraUsuario(nombre, email, pass) {
     return new Promise( (resolve, reject) => {
-      if (nombre === null && email === null && pass === null) {
+    /*  if (!nombre && !email && !pass) {
         reject("Falta Informacion por llenar")
         return "Falta Informacion por llenar"
 
-      }
-        const usuario = {
-            nombre: nombre,
-            correo: email,
-            clave: pass
-        };
-        usuarioStore.crear(usuario)
+      }*/
+        usuarioStore.crear(nombre, email, pass)
         resolve(usuario);
-        console.log(usuario)
     });
 
 }

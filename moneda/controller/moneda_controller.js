@@ -3,7 +3,9 @@ const MonedaStore = require('../model/db.js');
 
 function InsertMoneda(nombre, simbolo, precio, descripcion, imagen) {
     return new Promise( (resolve, reject) => {
-      //Hacer Validacion
+      if (!nombre && !simbolo && !precio && !descripcion, !imagen) {
+          return "Datos Incompletos"
+      }
         const Moneda = {
             nombre: nombre,
             precio: simbolo ,
@@ -16,9 +18,21 @@ function InsertMoneda(nombre, simbolo, precio, descripcion, imagen) {
     });
 }
 
-function listar_monedas() {
+function listar_monedas(one) {
     return new Promise( (resolve, reject) => {
-        resolve(MonedaStore.read())
+        resolve(MonedaStore.read(one))
+    });
+}
+
+function buscar(nombre) {
+    return new Promise( async (resolve, reject) => {
+        if (!nombre) {
+            console.log("No hay nada que Borrar")
+            reject("No hay ninguna ID con el Elemento")
+            return false
+        }
+      const moneda = await MonedaStore.buscar(nombre)
+      resolve(moneda)
     });
 }
 
@@ -53,6 +67,7 @@ module.exports = {
     InsertMoneda,
     listar_monedas,
     borrar_moneda,
-    editar_moneda
+    editar_moneda,
+    buscar
 
 }

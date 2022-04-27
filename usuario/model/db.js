@@ -1,4 +1,5 @@
 const db = require('mongoose');
+const { buscar } = require('../../moneda/model/db.js');
 const modelUser = require('./schema.js');
 
 const {
@@ -13,16 +14,26 @@ const connect = db.connect(`mongodb+srv://${DB_USER}:${DB_pass}@cluster0.8jtxe.m
 console.log("");
 } ).catch( e => console.log("Falla al Conectar") )
 
-async function Registro(usuario) {
-  const registrado = await modelUser.find()
-  const user = registrado.filter(registrado => registrado.correo === usuario.correo)
-  if ( user != null ) {
-    const addUsuario = new modelUser(usuario);
-     const saveUser = addUsuario.save();
-  }else{
-    return "Este Usuario ya Existe"
-  }
 
+async function registrados(email) {
+    const buscarRegistrados = await modelUser.find({ correo: email })
+    if (buscarRegistrados!== null) {
+        return "Email en Uso"
+    }else{
+      return "Debo registrar"
+    }
+}
+async function Registro(nombre, email, pass) {
+  registrados(email)
+  /*
+  //const user = registrado.filter(registrado => registrado.correo === usuario.correo)
+  if ( registrado != null ) {
+    return "Ya Hay un Usuario Registrado con este Email "
+  }else{
+    const addUsuario = new modelUser(usuario);
+    const saveUser = addUsuario.save();
+  }
+*/
 
 }
 
@@ -34,20 +45,6 @@ async function login(email, pass) {
     return user
    }
    return "Clave o Correo Invalidos"
-
-
-  /* const usuarios = buscaUsuarios.filter( data =>
-    data.email === email,
-    data.pass === pass
-    )
-    if ( usuarios != null ) {
-      console.log(usuarios)
-
-      return {
-        users: usuarios,
-        res: true
-      }
-    } */
 }
 
 async function usuarios(){

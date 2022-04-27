@@ -18,17 +18,22 @@ function insertarMoneda(moneda) {
         addmoneda.save();
 }
 
-async function listarMonedas() {
-    const lista_monedas = await model.find();
-    console.log(lista_monedas)
+async function listarMonedas(one) {
+    let oneMoneda = {}
+    if (one != null ) {
+      oneMoneda = {
+        nombre: one
+      }
+    }
+    const lista_monedas = await model.find(oneMoneda);
     return lista_monedas
 }
 
 async function buscarMoneda(nombre) {
-  const buscarMoneda = await model.find()
-  const moneda = buscarMoneda.filter(buscarMoneda => buscarMoneda.nombre === nombre )
-  if (moneda !== ['']) {
-   return moneda
+  const buscarMoneda = await model.find({nombre:nombre})
+ // const moneda = buscarMoneda.filter(buscarMoneda => buscarMoneda.nombre === nombre )
+  if (buscarMoneda !== ['']) {
+   return buscarMoneda
   }
   return "Moneda no Encontrada"
 }
