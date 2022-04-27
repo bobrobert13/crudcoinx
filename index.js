@@ -2,8 +2,17 @@ require('dotenv').config()
 const express = require("express");
 const bodyParser = require('body-parser');
 const route = require("./net/route");
+const cors = require("cors")
 const app = express();
 
+
+const CoinServer = {
+    origin: '*',
+    optionSuccessStatus: 200
+
+}
+
+app.use( cors(CoinServer) )
 const port = 3000 || process.env.DB_port
 
 app.get('/', (req, res) => {
