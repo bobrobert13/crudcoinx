@@ -13,7 +13,6 @@ const CoinServer = {
 }
 
 app.use( cors(CoinServer) )
-const port = 3000 || process.env.DB_port
 
 app.get('/', (req, res) => {
     res.json({
@@ -27,4 +26,4 @@ app.use(bodyParser.text());
 
 route(app);
 
-app.listen(port, function(){ console.log("NODE SERVER START") } );
+app.listen(process.env.PORT || 5000, function(){ console.log("NODE SERVER START") } );
