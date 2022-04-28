@@ -4,9 +4,9 @@
   "description": "Nuevos Desarrolladores",
   "main": "index.js",
   "scripts": {
-"build": "quasar build",
-"start": "node server.js",
-"heroku-postbuild": "yarn && yarn build"
+    "dev": "nodemon index",
+    "start": "node index",
+    
   },
   "keywords": [
     "curd",
