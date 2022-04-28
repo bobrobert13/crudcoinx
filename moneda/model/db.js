@@ -38,12 +38,13 @@ async function buscarMoneda(nombre) {
   return "Moneda no Encontrada"
 }
 
-async function editarMoneda(id, nombre, precio, simbolo, imagen)
+async function editarMoneda(id, nombre, precio, simbolo, descripcion, imagen)
 {
         const buscarMoneda = await model.findOne({_id:id});
         buscarMoneda.nombre = nombre;
         buscarMoneda.precio = precio;
         buscarMoneda.simbolo = simbolo;
+        buscarMoneda.descripcion = descripcion;
         buscarMoneda.imagen = imagen;
         const monedaEditada = await buscarMoneda.save();
         return monedaEditada;

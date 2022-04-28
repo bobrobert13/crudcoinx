@@ -3,13 +3,11 @@ const MonedaStore = require('../model/db.js');
 
 function InsertMoneda(nombre, simbolo, precio, descripcion, imagen) {
     return new Promise( (resolve, reject) => {
-      if (!nombre && !simbolo && !precio && !descripcion, !imagen) {
-          return "Datos Incompletos"
-      }
+    
         const Moneda = {
             nombre: nombre,
-            precio: simbolo ,
-            simbolo: precio,
+            precio: precio ,
+            simbolo: simbolo,
             descripcion: descripcion,
             imagen: imagen
         };
@@ -49,14 +47,14 @@ function borrar_moneda(id) {
 
 }
 
-function editar_moneda(id, nombre, precio, simbolo, imagen ) {
+function editar_moneda(id, nombre, precio, simbolo, descripcion, imagen ) {
     return new Promise( async (resolve, reject) => {
         if (!id) {
             console.log("No hay nada que Borrar")
             reject("No hay ninguna ID con el Elemento")
         }
 
-      const editar = await MonedaStore.update(id, nombre, precio, simbolo, imagen)
+      const editar = await MonedaStore.update(id, nombre, precio, simbolo, descripcion, imagen)
       resolve(editar)
     });
 }
