@@ -5,6 +5,13 @@ const route = require("./net/route");
 
 const app = express();
 
+
+const CoinServer = {
+    origin: '*',
+    optionSuccessStatus: 200
+
+}
+
 app.use( cors(CoinServer) )
 
 app.get('/', (req, res) => {
