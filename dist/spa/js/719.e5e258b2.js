@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkcrudcoinx"]=self["webpackChunkcrudcoinx"]||[]).push([[719],{9719:(c,n,e)=>{e.r(n),e.d(n,{default:()=>o});var r=e(9835);const s={class:"flex justify-center"};function t(c,n,e,t,u,a){return(0,r.wg)(),(0,r.iD)("h2",s,"Login")}const u=(0,r.aZ)({});var a=e(1639);const i=(0,a.Z)(u,[["render",t]]),o=i}}]);

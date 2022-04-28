@@ -1,4 +1,6 @@
 require('dotenv').config()
+const serveStatic = require('serve-static')
+const history = require('connect-history-api-fallback')
 const express = require("express");
 const bodyParser = require('body-parser');
 const route = require("./net/route");
@@ -13,13 +15,17 @@ const CoinServer = {
 }
 
 app.use( cors(CoinServer) )
-
+/*
 app.get('/', (req, res) => {
     res.json({
         conexion: "Activated",
         status: "Online"
     })
 })
+*/
+
+app.use(history())
+app.use(serveStatic(__dirname + '/dist/spa'))
 
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.text());

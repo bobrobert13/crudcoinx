@@ -3,7 +3,7 @@ const MonedaStore = require('../model/db.js');
 
 function InsertMoneda(nombre, simbolo, precio, descripcion, imagen) {
     return new Promise( (resolve, reject) => {
-    
+        //Hacer Validacion <---
         const Moneda = {
             nombre: nombre,
             precio: precio ,
