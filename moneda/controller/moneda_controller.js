@@ -3,13 +3,11 @@ const MonedaStore = require('../model/db.js');
 
 function InsertMoneda(nombre, simbolo, precio, descripcion, imagen) {
     return new Promise( (resolve, reject) => {
-      if (!nombre && !simbolo && !precio && !descripcion, !imagen) {
-          return "Datos Incompletos"
-      }
+        //Hacer Validacion <---
         const Moneda = {
             nombre: nombre,
-            precio: simbolo ,
-            simbolo: precio,
+            precio: precio ,
+            simbolo: simbolo,
             descripcion: descripcion,
             imagen: imagen
         };
