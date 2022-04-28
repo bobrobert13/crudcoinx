@@ -49,14 +49,14 @@ function borrar_moneda(id) {
 
 }
 
-function editar_moneda(id, nombre, precio, simbolo, imagen ) {
+function editar_moneda(id, nombre, precio, simbolo, descripcion, imagen ) {
     return new Promise( async (resolve, reject) => {
         if (!id) {
             console.log("No hay nada que Borrar")
             reject("No hay ninguna ID con el Elemento")
         }
 
-      const editar = await MonedaStore.update(id, nombre, precio, simbolo, imagen)
+      const editar = await MonedaStore.update(id, nombre, precio, simbolo, descripcion, imagen)
       resolve(editar)
     });
 }
